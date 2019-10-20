@@ -16,7 +16,7 @@ def _exit():
 def _hello():
     print(x.get())
     print(y.get())
-        ##dd
+
 
 def filed():
     dir = filedialog.askopenfilename(initialdir="/", title="Select file",
@@ -27,10 +27,10 @@ def filed():
 x = IntVar()
 y = IntVar()
 label3 = Label(root, text="Input text").place(x=375, y=40)
-label3 = Label(root, text="Key").place(x=402, y=320)
-label4 = Label(root, text="Matrix word").place(x=360, y=280)
-label4 = Label(root, text="Output").place(x=382, y=360)
-label4 = Label(root, text="Substitute letters").place(x=20, y=40)
+label4 = Label(root, text="Key").place(x=402, y=320)
+label5 = Label(root, text="Matrix word").place(x=360, y=280)
+label6 = Label(root, text="Output").place(x=382, y=360)
+label7 = Label(root, text="Substitute letters").place(x=20, y=40)
 sub1 = Radiobutton(root, text="v<=>w", padx=20, variable=x, value=0).place(x=40, y=70)
 sub2 = Radiobutton(root, text="w<=>v", padx=20, variable=x, value=1).place(x=40, y=100)
 sub3 = Radiobutton(root, text="c<=>k", padx=20, variable=x, value=2).place(x=40, y=130)
