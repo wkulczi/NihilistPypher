@@ -16,7 +16,7 @@ def _exit():
 def _hello():
     print(x.get())
     print(y.get())
-
+        ##dd
 
 def filed():
     dir = filedialog.askopenfilename(initialdir="/", title="Select file",
