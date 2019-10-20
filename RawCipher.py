@@ -52,7 +52,7 @@ def decypherWord(matrix, word):
     return buffer
 
 
-def cypher(word, key, matrix):
+def cypher_old(word, key, matrix):
     x: str
     ciphered_message = list()
     ciphered_key = list()
@@ -97,10 +97,19 @@ if __name__ == '__main__':
     print(matrix)
     key = raw_input("Enter key:")
     key = substituteLetters(key, symbol)
-    cyphered = cypher(word, key, matrix)
+    cyphered = cypher_old(word, key, matrix)
     print(cyphered)
     decyphered = decypher(cyphered, key, matrix)
     print(decyphered)
+
+
+
+def cypher(matrixWord,key,symbol,toCipher):
+    alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u",
+                "v", "w",
+                "x", "y", "z"]
+
+    return cipheredText
 
     # f_out = open("ciphered.txt", "w+")
     # f_in = open("tocipher.txt", "r")
