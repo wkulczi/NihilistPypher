@@ -11,6 +11,7 @@ class Front:
 
     def setChoice(self):
         print(self.x.get())
+        print(self.choice_list[self.x.get()])
 
     def __init__(self):
         self.root = Tk()
@@ -20,6 +21,7 @@ class Front:
         self.x = IntVar()
         self.y = IntVar()
         self.str = ""
+        self.choice_list = [("v", "w"), ("w","v"),("c", "k"), ("k", "c"), ("j", "i"), ("i", "j")]
         self.button_list = self.setButtonList()
         self.scroll_txt_list = self.setSTxtList()
         self.txt_list = self.setTxtList()
@@ -43,14 +45,14 @@ class Front:
         return L
 
     def setRadioList(self):
-        R = [Radiobutton(self.root, text="v<=>w", padx=20, variable=self.x,command=self.setChoice, value=0),
-             Radiobutton(self.root, text="w<=>v", padx=20, variable=self.x,command=self.setChoice, value=1),
-             Radiobutton(self.root, text="c<=>k", padx=20, variable=self.x,command=self.setChoice, value=2),
-             Radiobutton(self.root, text="k<=>c", padx=20, variable=self.x,command=self.setChoice, value=3),
-             Radiobutton(self.root, text="j<=>i", padx=20, variable=self.x,command=self.setChoice, value=4),
+        R = [Radiobutton(self.root, text="v<=>w", padx=20, variable=self.x, command=self.setChoice, value=0),
+             Radiobutton(self.root, text="w<=>v", padx=20, variable=self.x, command=self.setChoice, value=1),
+             Radiobutton(self.root, text="c<=>k", padx=20, variable=self.x, command=self.setChoice, value=2),
+             Radiobutton(self.root, text="k<=>c", padx=20, variable=self.x, command=self.setChoice, value=3),
+             Radiobutton(self.root, text="j<=>i", padx=20, variable=self.x, command=self.setChoice, value=4),
              Radiobutton(self.root, text="From text area", padx=20, variable=self.y, value=0),
              Radiobutton(self.root, text="From file", padx=20, variable=self.y, value=1),
-             Radiobutton(self.root, text="i<=>j", padx=20, variable=self.x,command=self.setChoice, value=5)]
+             Radiobutton(self.root, text="i<=>j", padx=20, variable=self.x, command=self.setChoice, value=5)]
         return R
 
     def setButtonList(self):
