@@ -1,5 +1,9 @@
 from unidecode import unidecode
+<<<<<<< HEAD
 import pandas as pd
+=======
+
+>>>>>>> back prolly finished, working on front
 
 class Back:
     def __init__(self):
@@ -8,14 +12,21 @@ class Back:
                          "v", "w",
                          "x", "y", "z"]
         self.key = ""
+<<<<<<< HEAD
         self.substitute_symbol = ("v", "w")
+=======
+        self.substitute_symbol = []
+>>>>>>> back prolly finished, working on front
         self.fromfile = bool()
         self.word = ""
         self.cypher_word = ""
         self.matrix = [[]]
+<<<<<<< HEAD
         self.matrix_parsed=""
         self.cyphered_key=[]
         self.cyphered_word=""
+=======
+>>>>>>> back prolly finished, working on front
 
     def setFromfile(self, x):
         self.fromfile = x
@@ -27,7 +38,15 @@ class Back:
         return [self.substitute_symbol[1] if x == self.substitute_symbol[0] else x for x in word]
 
     def removeDuplicates(self, word):
+<<<<<<< HEAD
         return list(dict.fromkeys(word))
+=======
+        unique = []
+        for elem in word:
+            if elem not in unique:
+                unique.append(elem)
+        return unique
+>>>>>>> back prolly finished, working on front
 
     def findlocation(self, matrix, char):
         for row in range(len(matrix)):
@@ -35,6 +54,7 @@ class Back:
                 if matrix[row][column] == char:
                     return str(row + 1) + str(column + 1)
 
+<<<<<<< HEAD
     def prepare(self, x, is_alphabet):
         x = [x.lower() for x in x]
         x = ''.join(filter(str.isalpha, x))
@@ -110,4 +130,55 @@ class Back:
         print(cyph_key)
         print(decyph_location)
         decyph_word = self.decypherWord(self.matrix, decyph_location)
+=======
+    def prepare(self, word, is_alphabet):
+        word = word.lower()
+        word = ''.join(filter(str.isalpha, word))
+        word = unidecode(word)
+        word = self.substituteLetters(word)
+
+        if is_alphabet:
+            word = self.removeDuplicates(self.word)
+            return [word[0:5], word[5:10], word[10:15], word[15:20], word[20:25]]
+        return word
+
+    def cipher(self, key, word, fromfile, filepath):
+        if fromfile:
+            file = open(filepath, "r")
+            word = file.read()
+        self.key = self.prepare(key, False)
+        self.matrix = self.prepare((list(word) + self.alphabet), True)
+        x: str
+        ciphered_message = list()
+        ciphered_key = list()
+        for x in word:
+            ciphered_message.insert(len(ciphered_message), int(self.findlocation(self.matrix, x)))
+        print(ciphered_message)
+        for x in key:
+            ciphered_key.insert(len(ciphered_key), int(self.findlocation(self.matrix, x)))
+        nihi_list = list()
+        for x in range(0, len(ciphered_message)):
+            nihi_list.insert(len(nihi_list), ciphered_message[x] + ciphered_key[x % len(ciphered_key)])
+        return nihi_list
+
+    def decypherWord(self, matrix, word):
+        buffer = ""
+        for x in range(0, len(word)):
+            buffer += matrix[int(str(word[x])[0]) - 1][int(str(word[x])[1]) - 1]
+        return buffer
+
+    def decipher(self, key, cyph_word, matrix,fromfile, filepath):
+        key = self.prepare(key, False)
+        if fromfile:
+            file=open(filepath,"r")
+            cyph_word=file.read()
+        cyph_key = list()
+        decyph_location = list()
+        for x in key:
+            cyph_key.insert(len(cyph_key), int(self.findlocation(matrix, x)))  # [aa,bb,cc...]
+        for x in range(0, len(cyph_word)):
+            decyph_location.insert(len(decyph_location),
+                                   cyph_word[x] - cyph_key[x % len(cyph_key)])  ##[aa,bb,cc...] po odjęciu
+        decyph_word = self.decypherWord(matrix, decyph_location)
+>>>>>>> back prolly finished, working on front
         return decyph_word

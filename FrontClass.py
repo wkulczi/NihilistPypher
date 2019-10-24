@@ -2,6 +2,10 @@ from tkinter import *
 from tkinter import filedialog
 from tkinter.scrolledtext import ScrolledText
 import BackClass
+<<<<<<< HEAD
+=======
+
+>>>>>>> back prolly finished, working on front
 
 # self.scroll_txt_list[0].insert(INSERT, "hello")
 from Util import isdefined
@@ -9,6 +13,7 @@ from Util import isdefined
 
 class Front:
     def cipher(self):
+<<<<<<< HEAD
         text = self.scroll_txt_list[0].get('1.0', END).strip()
         key = self.txt_list[1].get('1.0', END).strip()
         matrixword = self.txt_list[0].get('1.0', END).strip()
@@ -57,10 +62,24 @@ class Front:
         else:
             self.scroll_txt_list[1].configure(state="normal")
             self.scroll_txt_list[0].configure(state="normal")
+=======
+        if self.choice_source==1:
+            print("filee")
+        else:
+
+        # trzeba zrobic jakiegos latcha, zeby settowal czy matrixword/file jest zdefiniowane, zeby nie szyfrowal pustki
+        # self.backbone.cipher
+
+
+    def setChoiceSource(self):  # 0=text 1=file
+        self.choice_source = self.y.get()
+        self.backbone.setFromfile(self.choice_source)
+>>>>>>> back prolly finished, working on front
 
     def setChoiceSub(self):
         self.choice_sub = self.choice_list[self.x.get()]
         self.backbone.setSubstitute(self.choice_sub)
+<<<<<<< HEAD
     def generategrids(self):
         if isdefined(self.backbone.matrix_parsed):
             self.scroll_txt_list[2].configure(state="normal")
@@ -84,6 +103,8 @@ class Front:
             else:
                 self.scroll_txt_list[2].insert(END, "PRESS CYPHER/DECYPHER BUTTON FIRST.")
             self.scroll_txt_list[2].configure(state="disabled")
+=======
+>>>>>>> back prolly finished, working on front
 
     def setfilepath(self):
         if self.choice_source==1:
@@ -166,10 +187,15 @@ class Front:
 
     def setButtonList(self):
         B = [Button(self.root, text="Code", command=self.cipher),
+<<<<<<< HEAD
              Button(self.root, text="Decode", command=self.decipher),
              Button(self.root, text="Generate grids", command=self.generategrids),
              Button(self.root, text="Import file", command=self.setfilepath),
              Button(self.root, text="Export to file", command=self.savetofile)]
+=======
+             Button(self.root, text="Decode", command=self.cipher),
+             Button(self.root, text="Generate grids", command=self.cipher)]
+>>>>>>> back prolly finished, working on front
         return B
 
     def run(self):
