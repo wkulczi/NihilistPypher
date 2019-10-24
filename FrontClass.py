@@ -5,14 +5,18 @@ import BackClass
 <<<<<<< HEAD
 =======
 
+<<<<<<< HEAD
 >>>>>>> back prolly finished, working on front
 
+=======
+>>>>>>> oh my god, cyphering works <3
 # self.scroll_txt_list[0].insert(INSERT, "hello")
 from Util import isdefined
 
 
 class Front:
     def cipher(self):
+<<<<<<< HEAD
 <<<<<<< HEAD
         text = self.scroll_txt_list[0].get('1.0', END).strip()
         key = self.txt_list[1].get('1.0', END).strip()
@@ -34,11 +38,14 @@ class Front:
             if not isdefined(text):
                 self.scroll_txt_list[0].insert('1.0', "INSERT WORD TO CIPHER")
     def decipher(self):
+=======
+>>>>>>> oh my god, cyphering works <3
         text = self.scroll_txt_list[0].get('1.0', END).strip()
         key = self.txt_list[1].get('1.0', END).strip()
         matrixword = self.txt_list[0].get('1.0', END).strip()
         filepath = ""
         if isdefined(key) and (isdefined(text) or isdefined(filepath)):
+<<<<<<< HEAD
             wynik=self.backbone.decipher(key,text,matrixword)
             print(wynik)
             self.scroll_txt_list[1].configure(state="normal")
@@ -65,11 +72,17 @@ class Front:
 =======
         if self.choice_source==1:
             print("filee")
+=======
+            wynik=self.backbone.cipher(key,matrixword,text,self.choice_source,filepath) #print to textfile
+            print(wynik)
+            self.scroll_txt_list[1].configure(state="normal")
+            self.scroll_txt_list[1].insert(END, wynik)
+>>>>>>> oh my god, cyphering works <3
         else:
+            print("ye dummfuk i need data to cypher")
 
-        # trzeba zrobic jakiegos latcha, zeby settowal czy matrixword/file jest zdefiniowane, zeby nie szyfrowal pustki
-        # self.backbone.cipher
-
+    # trzeba zrobic jakiegos latcha, zeby settowal czy matrixword/file jest zdefiniowane, zeby nie szyfrowal pustki
+    # self.backbone.cipher
 
     def setChoiceSource(self):  # 0=text 1=file
         self.choice_source = self.y.get()
