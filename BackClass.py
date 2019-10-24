@@ -162,7 +162,10 @@ class Back:
             self.word = file.read()
         self.key = self.prepare(key, False)
         self.matrix = self.prepare((list(matrixword) + self.alphabet), True)
-        self.word=self.prepare(word,False)
+        self.word = self.prepare(word, False)
+        print(self.substitute_symbol)
+        print(self.matrix)
+        print(self.key)
         x: str
         ciphered_message = list()
         ciphered_key = list()
@@ -172,15 +175,24 @@ class Back:
             ciphered_key.insert(len(ciphered_key), int(self.findlocation(self.matrix, x)))
         nihi_list = list()
         for x in range(0, len(ciphered_message)):
-            nihi_list.insert(len(nihi_list), (ciphered_message[x] + ciphered_key[x % len(ciphered_key)])%100)
-        for x in range(0,len(nihi_list)):
-            if nihi_list[x]<10:
-                nihi_list[x]="0"+str(nihi_list[x])
+            nihi_list.insert(len(nihi_list), (ciphered_message[x] + ciphered_key[x % len(ciphered_key)]) % 100)
+        for x in range(0, len(nihi_list)):
+            if nihi_list[x] < 10:
+                nihi_list[x] = "0" + str(nihi_list[x])
             else:
-                nihi_list[x]=str(nihi_list[x])
+                nihi_list[x] = str(nihi_list[x])
         return nihi_list
 
+    def decypherWord(self, matrix, word):
+        try:
+            buffer = ""
+            for x in range(0, len(word)):
+                buffer += matrix[int(str(word[x])[0]) - 1][int(str(word[x])[1]) - 1]
+            return buffer
+        except:
+            return "WRONG KEY AND/OR SUBSTITUTE.\nLETTERS OUT OF BOUNDS"
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     def decipher(self, key, cyph_word, matrix,fromfile, filepath):
         key = self.prepare(key, False)
@@ -220,3 +232,32 @@ def decipher(self, key, cyph_word, matrix, fromfile, filepath):
     decyph_word = self.decypherWord(matrix, decyph_location)
     return decyph_word
 >>>>>>> oh my god, cyphering works <3
+=======
+    def decipher(self, key, cyph_word, matrixword, fromfile, filepath):
+        print("DECYPHER KURWO")
+        self.matrix = self.prepare((list(matrixword) + self.alphabet), True)
+        self.key = self.prepare(key, False)
+        print(self.substitute_symbol)
+        print(self.matrix)
+        print(self.key)
+        if fromfile:
+            file = open(filepath, "r")
+            cyph_word = file.read()
+        cyph_key = list()
+        decyph_location = list()
+        cyph_word = cyph_word.split()
+        for x in range(0, len(cyph_word)):
+            y = int(cyph_word[x])
+            if y < 10:
+                y += 100
+            cyph_word[x] = y
+
+        for x in self.key:
+            cyph_key.insert(len(cyph_key), int(self.findlocation(self.matrix, x)))
+        for x in range(0, len(cyph_word)):
+            decyph_location.insert(len(decyph_location),cyph_word[x] - cyph_key[x % len(cyph_key)])  ##[aa,bb,cc...] po odjęciu
+        print(cyph_key)
+        print(decyph_location)
+        decyph_word = self.decypherWord(self.matrix, decyph_location)
+        return decyph_word
+>>>>>>> Lotta spaghetti code, but hey, it works

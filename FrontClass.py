@@ -77,10 +77,27 @@ class Front:
             print(wynik)
             self.scroll_txt_list[1].configure(state="normal")
             self.scroll_txt_list[1].insert(END, wynik)
+<<<<<<< HEAD
 >>>>>>> oh my god, cyphering works <3
+=======
+            self.scroll_txt_list[1].configure(state="disabled")
         else:
             print("ye dummfuk i need data to cypher")
-
+    def decipher(self):
+        text = self.scroll_txt_list[0].get('1.0', END).strip()
+        key = self.txt_list[1].get('1.0', END).strip()
+        matrixword = self.txt_list[0].get('1.0', END).strip()
+        filepath = ""
+        if isdefined(key) and (isdefined(text) or isdefined(filepath)):
+            wynik=self.backbone.decipher(key,text,matrixword,self.choice_source,filepath)
+            print(wynik)
+            self.scroll_txt_list[1].configure(state="normal")
+            self.scroll_txt_list[1].delete('1.0',END)
+            self.scroll_txt_list[1].insert(END, wynik)
+            self.scroll_txt_list[1].configure(state="disabled")
+>>>>>>> Lotta spaghetti code, but hey, it works
+        else:
+            print("ye dummfuk i need data to cypher")
     # trzeba zrobic jakiegos latcha, zeby settowal czy matrixword/file jest zdefiniowane, zeby nie szyfrowal pustki
     # self.backbone.cipher
 
@@ -201,12 +218,16 @@ class Front:
     def setButtonList(self):
         B = [Button(self.root, text="Code", command=self.cipher),
 <<<<<<< HEAD
+<<<<<<< HEAD
              Button(self.root, text="Decode", command=self.decipher),
              Button(self.root, text="Generate grids", command=self.generategrids),
              Button(self.root, text="Import file", command=self.setfilepath),
              Button(self.root, text="Export to file", command=self.savetofile)]
 =======
              Button(self.root, text="Decode", command=self.cipher),
+=======
+             Button(self.root, text="Decode", command=self.decipher),
+>>>>>>> Lotta spaghetti code, but hey, it works
              Button(self.root, text="Generate grids", command=self.cipher)]
 >>>>>>> back prolly finished, working on front
         return B
