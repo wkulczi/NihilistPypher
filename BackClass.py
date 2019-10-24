@@ -1,9 +1,13 @@
 from unidecode import unidecode
 <<<<<<< HEAD
+<<<<<<< HEAD
 import pandas as pd
 =======
 
 >>>>>>> back prolly finished, working on front
+=======
+import pandas as pd
+>>>>>>> Generate grids works now!
 
 class Back:
     def __init__(self):
@@ -26,11 +30,17 @@ class Back:
         self.cypher_word = ""
         self.matrix = [[]]
 <<<<<<< HEAD
+<<<<<<< HEAD
         self.matrix_parsed=""
         self.cyphered_key=[]
         self.cyphered_word=""
 =======
 >>>>>>> back prolly finished, working on front
+=======
+        self.matrix_parsed=""
+        self.cyphered_key=[]
+        self.cyphered_word=""
+>>>>>>> Generate grids works now!
 
     def setFromfile(self, x):
         self.fromfile = x
@@ -156,6 +166,11 @@ class Back:
             return [x[0:5], x[5:10], x[10:15], x[15:20], x[20:25]]
         return x
 
+    def formatMatrix(self,matrix):
+        mat=pd.DataFrame(matrix,columns=[1,2,3,4,5],index=[1,2,3,4,5])
+        mat=mat.to_string()
+        self.matrix_parsed=mat
+
     def cipher(self, key, matrixword, word, fromfile, filepath):
         if fromfile:
             file = open(filepath, "r")
@@ -164,8 +179,7 @@ class Back:
         self.matrix = self.prepare((list(matrixword) + self.alphabet), True)
         self.word = self.prepare(word, False)
         print(self.substitute_symbol)
-        print(self.matrix)
-        print(self.key)
+        self.formatMatrix(self.matrix)
         x: str
         ciphered_message = list()
         ciphered_key = list()
@@ -173,6 +187,8 @@ class Back:
             ciphered_message.insert(len(ciphered_message), int(self.findlocation(self.matrix, x)))
         for x in self.key:
             ciphered_key.insert(len(ciphered_key), int(self.findlocation(self.matrix, x)))
+        self.cyphered_key=ciphered_key
+        self.cyphered_word=ciphered_message
         nihi_list = list()
         for x in range(0, len(ciphered_message)):
             nihi_list.insert(len(nihi_list), (ciphered_message[x] + ciphered_key[x % len(ciphered_key)]) % 100)
@@ -234,7 +250,6 @@ def decipher(self, key, cyph_word, matrix, fromfile, filepath):
 >>>>>>> oh my god, cyphering works <3
 =======
     def decipher(self, key, cyph_word, matrixword, fromfile, filepath):
-        print("DECYPHER KURWO")
         self.matrix = self.prepare((list(matrixword) + self.alphabet), True)
         self.key = self.prepare(key, False)
         print(self.substitute_symbol)
@@ -251,9 +266,12 @@ def decipher(self, key, cyph_word, matrix, fromfile, filepath):
             if y < 10:
                 y += 100
             cyph_word[x] = y
-
+        self.formatMatrix(self.matrix)
         for x in self.key:
             cyph_key.insert(len(cyph_key), int(self.findlocation(self.matrix, x)))
+
+        self.cyphered_key = cyph_key
+        self.cyphered_word =  cyph_word
         for x in range(0, len(cyph_word)):
             decyph_location.insert(len(decyph_location),cyph_word[x] - cyph_key[x % len(cyph_key)])  ##[aa,bb,cc...] po odjęciu
         print(cyph_key)

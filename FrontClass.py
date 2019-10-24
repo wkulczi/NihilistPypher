@@ -76,6 +76,7 @@ class Front:
             wynik=self.backbone.cipher(key,matrixword,text,self.choice_source,filepath) #print to textfile
             print(wynik)
             self.scroll_txt_list[1].configure(state="normal")
+            self.scroll_txt_list[1].delete('1.0',END)
             self.scroll_txt_list[1].insert(END, wynik)
 <<<<<<< HEAD
 >>>>>>> oh my god, cyphering works <3
@@ -110,6 +111,7 @@ class Front:
         self.choice_sub = self.choice_list[self.x.get()]
         self.backbone.setSubstitute(self.choice_sub)
 <<<<<<< HEAD
+<<<<<<< HEAD
     def generategrids(self):
         if isdefined(self.backbone.matrix_parsed):
             self.scroll_txt_list[2].configure(state="normal")
@@ -135,6 +137,19 @@ class Front:
             self.scroll_txt_list[2].configure(state="disabled")
 =======
 >>>>>>> back prolly finished, working on front
+=======
+    def generategrids(self):
+        self.scroll_txt_list[2].configure(state="normal")
+        self.scroll_txt_list[2].delete('1.0', END)
+        self.scroll_txt_list[2].insert(END, self.backbone.matrix_parsed)
+        self.scroll_txt_list[2].insert(END, "\n TRANSLATED KEY: \n ")
+        self.scroll_txt_list[2].insert(END, self.backbone.cyphered_key)
+        self.scroll_txt_list[2].insert(END, "\n TRANSLATED WORD: \n ")
+        self.scroll_txt_list[2].insert(END, self.backbone.cyphered_word)
+
+        self.scroll_txt_list[2].configure(state="disabled")
+
+>>>>>>> Generate grids works now!
 
     def setfilepath(self):
         if self.choice_source==1:
@@ -227,9 +242,13 @@ class Front:
              Button(self.root, text="Decode", command=self.cipher),
 =======
              Button(self.root, text="Decode", command=self.decipher),
+<<<<<<< HEAD
 >>>>>>> Lotta spaghetti code, but hey, it works
              Button(self.root, text="Generate grids", command=self.cipher)]
 >>>>>>> back prolly finished, working on front
+=======
+             Button(self.root, text="Generate grids", command=self.generategrids)]
+>>>>>>> Generate grids works now!
         return B
 
     def run(self):
