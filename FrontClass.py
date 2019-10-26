@@ -2,8 +2,6 @@ from tkinter import *
 from tkinter import filedialog
 from tkinter.scrolledtext import ScrolledText
 import BackClass
-
-# self.scroll_txt_list[0].insert(INSERT, "hello")
 from Util import isdefined
 
 
@@ -17,8 +15,7 @@ class Front:
             self.scroll_txt_list[1].configure(state="normal")
             self.scroll_txt_list[0].configure(state="normal")
         if isdefined(key) and (isdefined(text) or isdefined(filepath)):
-            wynik=self.backbone.cipher(key,matrixword,text) #print to textfile
-            print(wynik)
+            wynik=self.backbone.cipher(key,matrixword,text)
             self.scroll_txt_list[1].configure(state="normal")
             self.scroll_txt_list[1].delete('1.0',END)
             self.scroll_txt_list[1].insert(END, wynik)
@@ -35,15 +32,10 @@ class Front:
         filepath = ""
         if isdefined(key) and (isdefined(text) or isdefined(filepath)):
             wynik=self.backbone.decipher(key,text,matrixword)
-            print(wynik)
             self.scroll_txt_list[1].configure(state="normal")
             self.scroll_txt_list[1].delete('1.0',END)
             self.scroll_txt_list[1].insert(END, wynik)
             self.scroll_txt_list[1].configure(state="disabled")
-        else:
-            print("ye dummfuk i need data to cypher")
-    # trzeba zrobic jakiegos latcha, zeby settowal czy matrixword/file jest zdefiniowane, zeby nie szyfrowal pustki
-    # self.backbone.cipher
 
     def setChoiceSource(self):  # 0=text 1=file
         self.choice_source = self.y.get()
@@ -209,6 +201,3 @@ class Front:
         self.button_list[3].place(x=364, y=100)
         self.button_list[4].place(x=360, y=420)
         self.button_list[5].place(x=320, y=200)
-
-
-        #jak zrobi from file to zablokuj inputy

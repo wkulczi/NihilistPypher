@@ -55,7 +55,6 @@ class Back:
         self.key = self.prepare(key, False)
         self.matrix = self.prepare((list(matrixword) + self.alphabet), True)
         self.word = self.prepare(word, False)
-        print(self.substitute_symbol)
         self.formatMatrix(self.matrix)
         x: str
         ciphered_message = list()
@@ -88,9 +87,6 @@ class Back:
     def decipher(self, key, cyph_word, matrixword):
         self.matrix = self.prepare((list(matrixword) + self.alphabet), True)
         self.key = self.prepare(key, False)
-        print(self.substitute_symbol)
-        print(self.matrix)
-        print(self.key)
         cyph_key = list()
         decyph_location = list()
         cyph_word = cyph_word.split()
@@ -107,7 +103,5 @@ class Back:
         self.cyphered_word =  cyph_word
         for x in range(0, len(cyph_word)):
             decyph_location.insert(len(decyph_location),cyph_word[x] - cyph_key[x % len(cyph_key)])  ##[aa,bb,cc...] po odjęciu
-        print(cyph_key)
-        print(decyph_location)
         decyph_word = self.decypherWord(self.matrix, decyph_location)
         return decyph_word
