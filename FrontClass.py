@@ -44,7 +44,11 @@ class Front:
         key = self.txt_list[1].get('1.0', END).strip()
         matrixword = self.txt_list[0].get('1.0', END).strip()
         filepath = ""
+        if self.choice_source==1:
+            self.scroll_txt_list[1].configure(state="normal")
+            self.scroll_txt_list[0].configure(state="normal")
         if isdefined(key) and (isdefined(text) or isdefined(filepath)):
+<<<<<<< HEAD
 <<<<<<< HEAD
             wynik=self.backbone.decipher(key,text,matrixword)
             print(wynik)
@@ -74,6 +78,9 @@ class Front:
             print("filee")
 =======
             wynik=self.backbone.cipher(key,matrixword,text,self.choice_source,filepath) #print to textfile
+=======
+            wynik=self.backbone.cipher(key,matrixword,text) #print to textfile
+>>>>>>> Everything is working as it should. At least i hope so.
             print(wynik)
             self.scroll_txt_list[1].configure(state="normal")
             self.scroll_txt_list[1].delete('1.0',END)
@@ -83,14 +90,17 @@ class Front:
 =======
             self.scroll_txt_list[1].configure(state="disabled")
         else:
-            print("ye dummfuk i need data to cypher")
+            if not isdefined(key):
+                self.txt_list[1].insert('1.0',"KEY MISSING, INSERT KEY")
+            if not isdefined(text):
+                self.scroll_txt_list[0].insert('1.0', "INSERT WORD TO CIPHER")
     def decipher(self):
         text = self.scroll_txt_list[0].get('1.0', END).strip()
         key = self.txt_list[1].get('1.0', END).strip()
         matrixword = self.txt_list[0].get('1.0', END).strip()
         filepath = ""
         if isdefined(key) and (isdefined(text) or isdefined(filepath)):
-            wynik=self.backbone.decipher(key,text,matrixword,self.choice_source,filepath)
+            wynik=self.backbone.decipher(key,text,matrixword)
             print(wynik)
             self.scroll_txt_list[1].configure(state="normal")
             self.scroll_txt_list[1].delete('1.0',END)
@@ -105,7 +115,19 @@ class Front:
     def setChoiceSource(self):  # 0=text 1=file
         self.choice_source = self.y.get()
         self.backbone.setFromfile(self.choice_source)
+<<<<<<< HEAD
 >>>>>>> back prolly finished, working on front
+=======
+        if self.choice_source==1:
+            self.scroll_txt_list[0].configure(state="normal")
+            self.scroll_txt_list[0].delete('1.0',END)
+            self.scroll_txt_list[0].insert(END, "Set file path.")
+            self.scroll_txt_list[1].configure(state="disabled")
+            self.scroll_txt_list[0].configure(state="disabled")
+        else:
+            self.scroll_txt_list[1].configure(state="normal")
+            self.scroll_txt_list[0].configure(state="normal")
+>>>>>>> Everything is working as it should. At least i hope so.
 
     def setChoiceSub(self):
         self.choice_sub = self.choice_list[self.x.get()]
@@ -139,17 +161,32 @@ class Front:
 >>>>>>> back prolly finished, working on front
 =======
     def generategrids(self):
-        self.scroll_txt_list[2].configure(state="normal")
-        self.scroll_txt_list[2].delete('1.0', END)
-        self.scroll_txt_list[2].insert(END, self.backbone.matrix_parsed)
-        self.scroll_txt_list[2].insert(END, "\n TRANSLATED KEY: \n ")
-        self.scroll_txt_list[2].insert(END, self.backbone.cyphered_key)
-        self.scroll_txt_list[2].insert(END, "\n TRANSLATED WORD: \n ")
-        self.scroll_txt_list[2].insert(END, self.backbone.cyphered_word)
+        if isdefined(self.backbone.matrix_parsed):
+            self.scroll_txt_list[2].configure(state="normal")
+            self.scroll_txt_list[2].delete('1.0', END)
+            self.scroll_txt_list[2].insert(END, self.backbone.matrix_parsed)
+            self.scroll_txt_list[2].insert(END, "\n TRANSLATED WORD: \n ")
+            self.scroll_txt_list[2].insert(END, self.backbone.cyphered_word)
+            self.scroll_txt_list[2].insert(END, "\n TRANSLATED KEY: \n ")
+            self.scroll_txt_list[2].insert(END, self.backbone.cyphered_key)
+            self.scroll_txt_list[2].configure(state="disabled")
 
-        self.scroll_txt_list[2].configure(state="disabled")
-
+<<<<<<< HEAD
 >>>>>>> Generate grids works now!
+=======
+        else:
+            self.scroll_txt_list[2].configure(state="normal")
+            self.scroll_txt_list[2].delete('1.0', END)
+            if not isdefined(self.txt_list[1].get('1.0', END).strip()) and not isdefined(self.scroll_txt_list[0].get('1.0', END).strip()):
+                self.scroll_txt_list[2].insert(END, "NO GRIDS FOUND. INSERT KEY AND WORDS TO CIPHER.")
+            elif not isdefined(self.scroll_txt_list[0].get('1.0', END).strip()):
+                self.scroll_txt_list[2].insert(END, "NO GRIDS FOUND. INSERT WORDS TO CIPHER.")
+            elif not isdefined(self.txt_list[1].get('1.0', END).strip()):
+                self.scroll_txt_list[2].insert(END, "NO GRIDS FOUND. INSERT KEY.")
+            else:
+                self.scroll_txt_list[2].insert(END, "PRESS CYPHER/DECYPHER BUTTON FIRST.")
+            self.scroll_txt_list[2].configure(state="disabled")
+>>>>>>> Everything is working as it should. At least i hope so.
 
     def setfilepath(self):
         if self.choice_source==1:
@@ -243,12 +280,18 @@ class Front:
 =======
              Button(self.root, text="Decode", command=self.decipher),
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> Lotta spaghetti code, but hey, it works
              Button(self.root, text="Generate grids", command=self.cipher)]
 >>>>>>> back prolly finished, working on front
 =======
              Button(self.root, text="Generate grids", command=self.generategrids)]
 >>>>>>> Generate grids works now!
+=======
+             Button(self.root, text="Generate grids", command=self.generategrids),
+             Button(self.root, text="Import file", command=self.setfilepath),
+             Button(self.root, text="Export to file", command=self.savetofile)]
+>>>>>>> Everything is working as it should. At least i hope so.
         return B
 
     def run(self):

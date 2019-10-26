@@ -171,10 +171,7 @@ class Back:
         mat=mat.to_string()
         self.matrix_parsed=mat
 
-    def cipher(self, key, matrixword, word, fromfile, filepath):
-        if fromfile:
-            file = open(filepath, "r")
-            self.word = file.read()
+    def cipher(self, key, matrixword, word):
         self.key = self.prepare(key, False)
         self.matrix = self.prepare((list(matrixword) + self.alphabet), True)
         self.word = self.prepare(word, False)
@@ -208,6 +205,7 @@ class Back:
         except:
             return "WRONG KEY AND/OR SUBSTITUTE.\nLETTERS OUT OF BOUNDS"
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     def decipher(self, key, cyph_word, matrix,fromfile, filepath):
@@ -250,14 +248,14 @@ def decipher(self, key, cyph_word, matrix, fromfile, filepath):
 >>>>>>> oh my god, cyphering works <3
 =======
     def decipher(self, key, cyph_word, matrixword, fromfile, filepath):
+=======
+    def decipher(self, key, cyph_word, matrixword):
+>>>>>>> Everything is working as it should. At least i hope so.
         self.matrix = self.prepare((list(matrixword) + self.alphabet), True)
         self.key = self.prepare(key, False)
         print(self.substitute_symbol)
         print(self.matrix)
         print(self.key)
-        if fromfile:
-            file = open(filepath, "r")
-            cyph_word = file.read()
         cyph_key = list()
         decyph_location = list()
         cyph_word = cyph_word.split()
