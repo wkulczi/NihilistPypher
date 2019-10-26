@@ -57,7 +57,17 @@ class Front:
         else:
             self.scroll_txt_list[1].configure(state="normal")
             self.scroll_txt_list[0].configure(state="normal")
-
+    def clearall(self):
+        self.scroll_txt_list[0].configure(state="normal")
+        self.scroll_txt_list[0].delete('1.0',END)
+        self.scroll_txt_list[1].configure(state="normal")
+        self.scroll_txt_list[1].delete('1.0',END)
+        self.scroll_txt_list[2].configure(state="normal")
+        self.scroll_txt_list[2].delete('1.0',END)
+        self.scroll_txt_list[1].configure(state="disabled")
+        self.scroll_txt_list[2].configure(state="disabled")
+        self.txt_list[0].delete('1.0',END)
+        self.txt_list[1].delete('1.0',END)
     def setChoiceSub(self):
         self.choice_sub = self.choice_list[self.x.get()]
         self.backbone.setSubstitute(self.choice_sub)
@@ -169,7 +179,8 @@ class Front:
              Button(self.root, text="Decode", command=self.decipher),
              Button(self.root, text="Generate grids", command=self.generategrids),
              Button(self.root, text="Import file", command=self.setfilepath),
-             Button(self.root, text="Export to file", command=self.savetofile)]
+             Button(self.root, text="Export to file", command=self.savetofile),
+             Button(self.root, text="Clear all containers", command=self.clearall)]
         return B
 
     def run(self):
@@ -197,6 +208,7 @@ class Front:
         self.button_list[2].place(x=20, y=280)
         self.button_list[3].place(x=364, y=100)
         self.button_list[4].place(x=360, y=420)
+        self.button_list[5].place(x=320, y=200)
 
 
         #jak zrobi from file to zablokuj inputy
