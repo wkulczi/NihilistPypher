@@ -106,7 +106,7 @@ Decyphering with keys and substitutions different from the ones used in encoding
 ---
 I know I should not put an `.exe` file into my repository, but it's just the fastest solution right now.
 
-Obviously the application is written with ![Python](https://img.icons8.com/metro/26/000000/python.png) (why else would i insert "Py" in the name? :shrug:) with the usage of:
+Obviously the application is written with ![Python](https://img.icons8.com/metro/26/000000/python.png) (why else would i insert "Py" in the name? 🤔) with the usage of:
 - `Tkinter` (to wrap the code into a slick interface)
 - [Unidecode](https://pypi.org/project/Unidecode/) (to remove all special symbols from the cyphered messages)
 - [Pandas](https://pandas.pydata.org/) (to show a good looking grid of the alphabet)
@@ -118,7 +118,7 @@ Huge thanks to
 for making this code come true.
 ### Information reference
 ---
-- [American Cryptogram Association - Nihilist Substitution](https://www.cryptogram.org/downloads/aca.info/ciphers/NihilistSubstitution.pdf "Here be thy pdf")
+- [American Cryptogram Association - Nihilist Substitution](https://www.cryptogram.org/downloads/aca.info/ciphers/NihilistSubstitution.pdf)
 - PUT Poznań inside pdf _szyfry-cd3.pdf_ (probably not allowed to link it)
 - [Tkinter documentation](https://docs.python.org/3/library/tk.html)
 - [Pandas documentation](https://pandas.pydata.org/pandas-docs/stable/)
