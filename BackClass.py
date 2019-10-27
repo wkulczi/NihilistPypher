@@ -56,7 +56,7 @@ class Back:
         self.matrix = self.prepare((list(matrixword) + self.alphabet), True)
         self.word = self.prepare(word, False)
         self.formatMatrix(self.matrix)
-        x: str
+        x=str()
         ciphered_message = list()
         ciphered_key = list()
         for x in self.word:
