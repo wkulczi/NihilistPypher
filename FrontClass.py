@@ -121,7 +121,7 @@ class Front:
     def __init__(self):
         self.filepath=""
         self.root = Tk()
-        self.root.title("NihilistPypher main")
+        self.root.title("NihilistPypher")
         self.root.geometry("900x600+200+200")
         self.root.geometry("900x600+200+200")
         self.root.resizable(FALSE, FALSE)
@@ -151,7 +151,7 @@ class Front:
     def setLabelList(self):
         L = [Label(self.root, text="Input text"), Label(self.root, text="Key"), Label(self.root, text="Matrix word"),
              Label(self.root, text="Output"), Label(self.root, text="Substitute letters"),
-             Label(self.root, text="Source:")]
+             Label(self.root, text="Source")]
         return L
 
     def setRadioList(self):
